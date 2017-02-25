@@ -1,0 +1,48 @@
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: v1
+kind: BuildConfig
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+  creationTimestamp: 2017-02-25T08:07:14Z
+  labels:
+    app: ruby-ex
+  name: ruby-ex
+  namespace: sample03
+  resourceVersion: "916560570"
+  selfLink: /oapi/v1/namespaces/sample03/buildconfigs/ruby-ex
+  uid: 6a840ce6-fb31-11e6-a876-0ebeb1070c7f
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: ruby-ex:latest
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    git:
+      uri: https://github.com/yuji-k64613/ruby-ex.git
+    type: Git
+  strategy:
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        name: ruby-20-centos7:latest
+    type: Source
+  triggers:
+  - github:
+      secret: he8RDI7ffSNRvuMgj-0f
+    type: GitHub
+  - generic:
+      secret: v-O2sY7ijhnKmAEFOr3P
+    type: Generic
+  - type: ConfigChange
+  - imageChange:
+      lastTriggeredImageID: openshift/ruby-20-centos7@sha256:751a3cd1905914389fe568c25b3d5367cd705a0e4f81970a361f670ce891baf7
+    type: ImageChange
+status:
+  lastVersion: 3
